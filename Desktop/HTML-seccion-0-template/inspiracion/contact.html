@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafolio de proyectos" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <title>Mi portafolio</title>
+</head>
+<body>
+
+  <!-- 🔷 Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">J<span>F</span></a>
+      <ul>
+        <li><a href="#" class="current">Inicio</a></li>
+        <li><a href="#">Acerca de</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 🔷 Banner -->
+  <section class="banner-header">
+    <div class="banner-header-text">
+      <h1 class="banner-title">Juan Felipe Henry <span>Suarez Ospino</span></h1>
+      <p class="intro-text">Una persona excelente que estudia en Parquesoft y aprende de todo.</p>
+      <a href="docs/cv.pdf" download class="btn">Descargar CV</a>
+    </div>
+  </section>
+
+  <!-- 🟢 Portafolio -->
+  <section class="section-portfolio">
+    <div class="container">
+      <div class="section-header">
+        <h3 class="title" data-title="Mis proyectos">Portafolio</h3>
+      </div>
+      <div class="card-projects">
+        <div class="box">
+          <div class="rotate-scale-up">
+            <a href="project-1.html">
+              <img src="img/proyecto-1.webp" alt="Proyecto 1" />
+            </a>
+          </div>
+          <h3>Proyecto 1</h3>
+        </div>
+        <div class="box">
+          <div class="rotate-center">
+            <a href="project-2.html">
+              <img src="img/proyecto-2.webp" alt="Proyecto 2" />
+            </a>
+          </div>
+          <h3>Proyecto 2</h3>
+        </div>
+        <div class="box">
+          <div class="bounce">
+            <a href="project-3.html">
+              <img src="img/proyecto-3.webp" alt="Proyecto 3" />
+            </a>
+          </div>
+          <h3>Proyecto 3</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔶 Contacto -->
+  <section class="section-portfolio" id="contacto">
+    <div class="container">
+      <h3 class="title" data-title="Contacto directo">Contáctame</h3>
+
+      <div class="form-map">
+        <!-- 📍 Mapa de Google -->
+        <iframe 
+          src="https://maps.google.com/maps?q=Cali,%20Colombia&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          frameborder="0"
+          style="border: 4px solid red; border-radius: 12px; box-shadow: 0 0 20px lime;"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+
+        <!-- ✉️ Formulario -->
+        <form class="box-form">
+          <input type="text" placeholder="Tu nombre" class="input-form" required />
+          <input type="email" placeholder="Correo electrónico" class="input-form" required />
+
+          <select class="input-form" required>
+            <option value="" disabled selected>Selecciona un motivo</option>
+            <option value="cotizacion">Cotización</option>
+            <option value="soporte">Soporte técnico</option>
+            <option value="consulta">Consulta general</option>
+          </select>
+
+          <textarea placeholder="Escribe tu mensaje aquí..." cols="30" rows="10" class="input-form" required></textarea>
+          <button type="submit" class="btn">Enviar</button>
+
+          <p id="form-message" style="display: none; color: limegreen; margin-top: 15px;">
+            ¡Tu mensaje ha sido enviado con éxito!
+          </p>
+        </form>
+      </div>
+
+      <!-- 🎬 Video de YouTube -->
+      <div style="margin-top: 40px; display: flex; justify-content: center;">
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/-d_HP-aCkgI?si=ElaTrOgF2a_BzVZZ" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔻 Footer -->
+  <footer class="section-portfolio" style="background-color: #0f111e; padding: 30px 20px;">
+    <div class="container">
+      <div class="card-info">
+        <article>
+          <i class="fas fa-map-marked-alt fa-2x"></i>
+          <h4 class="line-break">Dirección</h4>
+          <p>Calle 59n 3bbis-65</p>
+          <p>Cali, Valle del Cauca</p>
+        </article>
+
+        <article>
+          <i class="fas fa-phone fa-2x"></i>
+          <h4 class="line-break">Teléfono</h4>
+          <p>Oficina: 6024867428</p>
+          <p>Personal: 3215356284</p>
+        </article>
+
+        <article>
+          <i class="fas fa-envelope fa-2x"></i>
+          <h4 class="line-break">Email</h4>
+          <p>Oficina: juan_felipe.suarez@uao.edu.co</p>
+          <p>Personal: pipesuarez1506@gmail.com</p>
+        </article>
+
+        <article>
+          <i class="fas fa-clock fa-2x"></i>
+          <h4>Horario de atención</h4>
+          <p>Lunes a Viernes: 9:00 am - 6:00 pm</p>
+          <p>Sábados: 10:00 am - 2:00 pm</p>
+        </article>
+      </div>
+
+      <ul style="list-style: none; display: flex; justify-content: center; gap: 20px; padding-top: 10px;">
+        <li><a href="#"><i class="fab fa-instagram" style="font-size: 24px; color: red;"></i></a></li>
+        <li><a href="#"><i class="fab fa-facebook-square" style="font-size: 24px; color: lime;"></i></a></li>
+        <li><a href="#"><i class="fab fa-youtube" style="font-size: 24px; color: dodgerblue;"></i></a></li>
+      </ul>
+
+      <p style="text-align: center; margin-top: 10px;">Portafolio 2025 &copy;</p>
+    </div>
+  </footer>
+
+  <!-- Script del formulario -->
+  <script>
+    const form = document.querySelector(".box-form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("form-message").style.display = "block";
+      form.reset();
+    });
+  </script>
+</body>
+</html>

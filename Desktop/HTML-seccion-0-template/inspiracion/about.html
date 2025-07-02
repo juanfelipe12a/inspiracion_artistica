@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Inspiración Artística y vida</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background-color: #111;
+      color: #f4f4f4;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #00ffcc;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 1rem;
+      background-color: crimson;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .info-personal {
+      max-width: 600px;
+      margin: 10px auto 30px auto;
+      background-color: #222;
+      border-left: 5px solid #00ffcc;
+      padding: 15px;
+      border-radius: 8px;
+      font-style: normal;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    .frase {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #222;
+      border-left: 5px solid #00ffcc;
+      border-radius: 8px;
+      font-style: italic;
+      text-align: center;
+      animation: parpadeo 3s infinite;
+    }
+    @keyframes parpadeo {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .timeline {
+      border-left: 3px solid #0ff;
+      margin: 30px auto;
+      padding-left: 20px;
+      max-width: 600px;
+    }
+    .timeline p {
+      margin: 10px 0;
+    }
+    .accordion {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .accordion-item {
+      background: #222;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .accordion-header {
+      padding: 10px;
+      cursor: pointer;
+      background: #333;
+      font-weight: bold;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 10px;
+    }
+    .accordion-item.active .accordion-content {
+      max-height: 150px;
+      padding: 10px;
+    }
+    .timer {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 1.2rem;
+      color: gold;
+    }
+    .modo {
+      margin: 20px auto;
+      text-align: center;
+    }
+    .art-mode {
+      background-color: #1a0033;
+      color: #ffccff;
+      font-family: cursive;
+    }
+    .stars {
+      background: radial-gradient(#fff 1px, transparent 1px);
+      background-size: 10px 10px;
+    }
+    .trivia {
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    .trivia p {
+      margin-bottom: 10px;
+    }
+    .trivia button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Inspiración Artística</h1>
+
+  <div class="info-personal">
+    <p>Hola, me llamo <strong>Juan Felipe</strong>, tengo <strong>22 años</strong>, estudio en <strong>Parquesoft</strong> desarrollo de software y todo lo relacionado.</p>
+  </div>
+
+  <button class="btn" onclick="mostrarFrase()">Inspiración</button>
+  <button class="btn" onclick="mostrarFrase()">Repetir frase</button>
+  <div class="frase" id="contenedor-frase"></div>
+
+  <div class="timeline">
+    <h2>Línea del Tiempo</h2>
+    <p><strong>1400</strong> - Renacimiento italiano</p>
+    <p><strong>1600</strong> - Barroco</p>
+    <p><strong>1800</strong> - Impresionismo</p>
+    <p><strong>1900</strong> - Surrealismo</p>
+    <p><strong>2000</strong> - Arte digital</p>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Van Gogh</div>
+      <div class="accordion-content">Van Gogh pintó más de 2100 obras en solo 10 años.</div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Leonardo da Vinci</div>
+      <div class="accordion-content">Leonardo tardó 4 años en terminar la Mona Lisa.</div>
+    </div>
+  </div>
+
+  <div class="timer" id="cuentaRegresiva"></div>
+
+  <div class="modo">
+    <button class="btn" onclick="cambiarModo()">Modo lector / artista</button>
+  </div>
+
+  <div class="trivia">
+    <h2>Mini Trivia</h2>
+    <p>¿Quién pintó "La persistencia de la memoria"?</p>
+    <button onclick="mostrarRespuesta(this, true)">Salvador Dalí</button>
+    <button onclick="mostrarRespuesta(this, false)">Pablo Picasso</button>
+    <button onclick="mostrarRespuesta(this, false)">Claude Monet</button>
+  </div>
+
+  <script>
+    const frases = [
+      "Soy Juan Felipe, un apasionado del desarrollo de software y el aprendizaje constante.",
+      "A mis 22 años, estudio en Parquesoft para transformar ideas en soluciones tecnológicas.",
+      "Cada línea de código que escribo es un paso más hacia mis sueños profesionales.",
+      "Me esfuerzo cada día para crecer y aportar valor con creatividad y disciplina.",
+      "En el mundo del software, encuentro mi inspiración y mi vocación.",
+      "El aprendizaje es mi motor y la innovación mi objetivo.",
+      "Ser desarrollador es para mí más que una carrera, es una forma de entender el mundo.",
+    ];
+
+    function mostrarFrase() {
+      const frase = frases[Math.floor(Math.random() * frases.length)];
+      document.getElementById("contenedor-frase").textContent = frase;
+    }
+
+    function toggleAccordion(el) {
+      el.parentElement.classList.toggle("active");
+    }
+
+    function cuentaRegresiva() {
+      const objetivo = new Date("2025-12-31").getTime();
+      const ahora = new Date().getTime();
+      const diferencia = objetivo - ahora;
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      document.getElementById("cuentaRegresiva").textContent = `Faltan ${dias} días para mi próximo proyecto.`;
+    }
+    setInterval(cuentaRegresiva, 1000);
+
+    function cambiarModo() {
+      document.body.classList.toggle("art-mode");
+      document.body.classList.toggle("stars");
+    }
+
+    function mostrarRespuesta(btn, correcto) {
+      if (correcto) {
+        btn.style.backgroundColor = 'green';
+      } else {
+        btn.style.backgroundColor = 'red';
+      }
+    }
+
+    window.onload = mostrarFrase;
+  </script>
+</body>
+</html>
