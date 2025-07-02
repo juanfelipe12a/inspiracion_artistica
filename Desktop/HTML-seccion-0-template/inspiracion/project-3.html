@@ -1,24 +1,261 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Proyecto 3</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(to right, #ff6e7f, #bfe9ff);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #ff6e7f;
+      border-radius: 20px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #ffd1d1;
+    }
+
+    .banner-title {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .intro-text {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+
+    .img-web {
+      max-width: 90%;
+      height: auto;
+      border-radius: 16px;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 0 5px rgba(255,255,255,0.6));
+    }
+
+    .img-web:hover {
+      transform: scale(1.05);
+    }
+
+    .contenido {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .contenido p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    audio {
+      display: block;
+      margin: 2rem auto;
+      width: 80%;
+      border-radius: 10px;
+    }
+
+    #btn-chispas {
+      margin: 2rem auto;
+      display: block;
+      padding: 12px 20px;
+      background-color: #ff6e7f;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    #btn-chispas:hover {
+      background-color: #f94b66;
+    }
+
+    .frase {
+      text-align: center;
+      font-style: italic;
+      margin: 2rem auto;
+      font-size: 1.2rem;
+      color: #777;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9em;
+      color: #888;
+      padding: 20px;
+    }
+
+    /* Chispas estilo */
+    .chispa {
+      position: fixed;
+      font-weight: bold;
+      color: #ff69b4;
+      animation: volar 1.5s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes volar {
+      0% { transform: scale(1) translateY(0); opacity: 1; }
+      100% { transform: scale(0.5) translateY(-200px); opacity: 0; }
+    }
+
+    /* Animación mensaje de éxito */
+    @keyframes fadeSuccess {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    #mensaje-exito {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: green;
+      animation: fadeSuccess 1s ease-out;
+    }
+  </style>
 </head>
 <body>
-  <header class="banner-header">
-    <div class="banner-header-text">
-      <h1 class="banner-title">Proyecto 3</h1>
-      <p class="intro-text">Este es el Proyecto 3. Puedes incluir capturas, funcionalidades, retos, o logros del proyecto.</p>
-      
-<img 
-  src="img/proyecto-3web.webp" 
-  alt="Proyecto 3" 
-  class="img-web" 
-  style="max-width: 300px; margin: 20px auto; display: block; border-radius: 12px;" 
-      <a href="index.html" class="btn">← Volver al inicio</a>
-    </div>
+
+  <!-- 🎵 Música relajante de fondo -->
+  <audio controls autoplay loop>
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure/Komiku_-_10_-_Battle_of_Pogs.mp3" type="audio/mp3">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <!-- 🌈 Encabezado con navegación -->
+  <header>
+    <h1 class="banner-title">Proyecto 3</h1>
+    <p class="intro-text">
+      En este proyecto exploramos animaciones dinámicas y un enfoque más visual y atractivo, con especial atención en la estética y la interacción.
+    </p>
+    <nav>
+      <a href="index.html">🏠 Inicio</a>
+      <a href="contact.html">📬 Contacto</a>
+      <a href="about.html">👤 About</a>
+    </nav>
   </header>
+
+  <!-- 🖼️ Imagen del proyecto -->
+  <img 
+    src="https://images.unsplash.com/photo-1600374004378-6e1de876f1d2?auto=format&fit=crop&w=1000&q=80" 
+    alt="Vista del Proyecto 3" 
+    class="img-web"
+  />
+
+  <!-- 📝 Descripción -->
+  <section class="contenido">
+    <p>
+      Este proyecto utiliza HTML5, CSS3 y JavaScript moderno para lograr una experiencia visual envolvente. Está diseñado con animaciones suaves y una navegación clara.
+    </p>
+    <p>
+      Todo está pensado para atraer la atención del usuario mientras se mantiene una estructura profesional.
+    </p>
+    <button id="btn-chispas">✨ Lanzar chispas con mi nombre</button>
+  </section>
+
+  <!-- 📬 Formulario animado -->
+  <section class="contenido">
+    <h2>Contáctame desde aquí</h2>
+    <form id="formulario" style="max-width: 500px; margin: auto;">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="width: 100%; padding: 10px; margin: 10px 0;" />
+      <input type="email" name="email" placeholder="Tu correo" required style="width: 100%; padding: 10px; margin: 10px 0;" />
+      <textarea name="mensaje" placeholder="Escribe tu mensaje" required style="width: 100%; padding: 10px; margin: 10px 0;"></textarea>
+      <button type="submit" id="btn-enviar" style="padding: 10px 20px; background-color: #ff6e7f; color: white; border: none; border-radius: 8px; cursor: pointer;">Enviar</button>
+    </form>
+    <div id="mensaje-exito">¡Mensaje enviado con éxito! 🎉</div>
+  </section>
+
+  <p class="frase">"Tu creatividad es el límite del código." – Juan Felipe</p>
+
+  <footer>
+    Hecho con ❤️ por Juan Felipe Henry Suárez Ospino – 2025
+  </footer>
+
+  <!-- 🌟 Scripts -->
+  <script>
+    // ✨ Chispas personalizadas
+    const btnChispas = document.getElementById("btn-chispas");
+    btnChispas.addEventListener("click", () => {
+      for (let i = 0; i < 15; i++) {
+        const chispa = document.createElement("div");
+        chispa.classList.add("chispa");
+        chispa.style.left = Math.random() * window.innerWidth + "px";
+        chispa.style.top = window.innerHeight + "px";
+        chispa.innerText = "Juan Felipe";
+        document.body.appendChild(chispa);
+        setTimeout(() => chispa.remove(), 1500);
+      }
+    });
+
+    // 📤 Animación de envío de formulario
+    const formulario = document.getElementById("formulario");
+    const btnEnviar = document.getElementById("btn-enviar");
+    const mensajeExito = document.getElementById("mensaje-exito");
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      btnEnviar.innerText = "Enviando...";
+      btnEnviar.disabled = true;
+
+      setTimeout(() => {
+        btnEnviar.innerText = "Enviar";
+        btnEnviar.disabled = false;
+        formulario.reset();
+        mensajeExito.style.display = "block";
+
+        // Efecto chispas al enviar
+        for (let i = 0; i < 10; i++) {
+          const chispa = document.createElement("div");
+          chispa.classList.add("chispa");
+          chispa.style.left = Math.random() * window.innerWidth + "px";
+          chispa.style.top = window.innerHeight + "px";
+          chispa.innerText = "Juan Felipe";
+          document.body.appendChild(chispa);
+          setTimeout(() => chispa.remove(), 1500);
+        }
+
+      }, 2000);
+    });
+  </script>
+
 </body>
 </html>

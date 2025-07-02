@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Inspiración Artística y vida</title>
+  <title>About - Inspiración Artística y Vida</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -37,8 +37,6 @@
       border-left: 5px solid #00ffcc;
       padding: 15px;
       border-radius: 8px;
-      font-style: normal;
-      font-size: 1.1rem;
       text-align: center;
     }
     .frase {
@@ -60,9 +58,6 @@
       margin: 30px auto;
       padding-left: 20px;
       max-width: 600px;
-    }
-    .timeline p {
-      margin: 10px 0;
     }
     .accordion {
       max-width: 600px;
@@ -99,21 +94,9 @@
       margin: 20px auto;
       text-align: center;
     }
-    .art-mode {
-      background-color: #1a0033;
-      color: #ffccff;
-      font-family: cursive;
-    }
-    .stars {
-      background: radial-gradient(#fff 1px, transparent 1px);
-      background-size: 10px 10px;
-    }
     .trivia {
       max-width: 600px;
       margin: 30px auto;
-    }
-    .trivia p {
-      margin-bottom: 10px;
     }
     .trivia button {
       background-color: #333;
@@ -124,21 +107,40 @@
       border-radius: 8px;
       cursor: pointer;
     }
+    .mapa-container {
+      text-align: center;
+      margin: 40px auto;
+    }
+    iframe {
+      display: block;
+      margin: 0 auto 15px auto;
+      border-radius: 10px;
+      max-width: 100%;
+    }
+    .art-mode {
+      background-color: #1a0033;
+      color: #ffccff;
+      font-family: cursive;
+    }
+    .stars {
+      background: radial-gradient(#fff 1px, transparent 1px);
+      background-size: 10px 10px;
+    }
   </style>
 </head>
 <body>
-  <h1>Inspiración Artística</h1>
+  <h1>🎨 Inspiración Artística - Juan Felipe ⭐</h1>
 
   <div class="info-personal">
-    <p>Hola, me llamo <strong>Juan Felipe</strong>, tengo <strong>22 años</strong>, estudio en <strong>Parquesoft</strong> desarrollo de software y todo lo relacionado.</p>
+    <p>Hola, soy <strong>Juan Felipe</strong>, un desarrollador apasionado. 🎬 Estudiante en <strong>Parquesoft</strong>, creador de experiencias digitales que inspiran.</p>
   </div>
 
-  <button class="btn" onclick="mostrarFrase()">Inspiración</button>
-  <button class="btn" onclick="mostrarFrase()">Repetir frase</button>
+  <button class="btn" onclick="mostrarFrase()">✨ Inspiración</button>
+  <button class="btn" onclick="mostrarFrase()">🔁 Repetir frase</button>
   <div class="frase" id="contenedor-frase"></div>
 
   <div class="timeline">
-    <h2>Línea del Tiempo</h2>
+    <h2>📅 Línea del Tiempo</h2>
     <p><strong>1400</strong> - Renacimiento italiano</p>
     <p><strong>1600</strong> - Barroco</p>
     <p><strong>1800</strong> - Impresionismo</p>
@@ -149,26 +151,31 @@
   <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" onclick="toggleAccordion(this)">Van Gogh</div>
-      <div class="accordion-content">Van Gogh pintó más de 2100 obras en solo 10 años.</div>
+      <div class="accordion-content">🎨 Van Gogh pintó más de 2100 obras en solo 10 años.</div>
     </div>
     <div class="accordion-item">
       <div class="accordion-header" onclick="toggleAccordion(this)">Leonardo da Vinci</div>
-      <div class="accordion-content">Leonardo tardó 4 años en terminar la Mona Lisa.</div>
+      <div class="accordion-content">🖌️ Leonardo tardó 4 años en terminar la Mona Lisa.</div>
     </div>
   </div>
 
   <div class="timer" id="cuentaRegresiva"></div>
 
   <div class="modo">
-    <button class="btn" onclick="cambiarModo()">Modo lector / artista</button>
+    <button class="btn" onclick="cambiarModo()">🎭 Modo lector / artista</button>
   </div>
 
   <div class="trivia">
-    <h2>Mini Trivia</h2>
+    <h2>❓ Mini Trivia</h2>
     <p>¿Quién pintó "La persistencia de la memoria"?</p>
     <button onclick="mostrarRespuesta(this, true)">Salvador Dalí</button>
     <button onclick="mostrarRespuesta(this, false)">Pablo Picasso</button>
     <button onclick="mostrarRespuesta(this, false)">Claude Monet</button>
+  </div>
+
+  <div class="mapa-container">
+    <h2>📍 Hollywood en el mapa</h2>
+    <iframe src="https://www.google.com/maps?q=Hollywood&output=embed" width="600" height="450" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <script>
@@ -196,9 +203,8 @@
       const ahora = new Date().getTime();
       const diferencia = objetivo - ahora;
       const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      document.getElementById("cuentaRegresiva").textContent = `Faltan ${dias} días para mi próximo proyecto.`;
+      document.getElementById("cuentaRegresiva").textContent = `📆 Faltan ${dias} días para mi próximo proyecto.`;
     }
-    setInterval(cuentaRegresiva, 1000);
 
     function cambiarModo() {
       document.body.classList.toggle("art-mode");
@@ -206,14 +212,13 @@
     }
 
     function mostrarRespuesta(btn, correcto) {
-      if (correcto) {
-        btn.style.backgroundColor = 'green';
-      } else {
-        btn.style.backgroundColor = 'red';
-      }
+      btn.style.backgroundColor = correcto ? 'green' : 'red';
     }
 
-    window.onload = mostrarFrase;
+    window.onload = () => {
+      mostrarFrase();
+      setInterval(cuentaRegresiva, 1000);
+    };
   </script>
 </body>
 </html>

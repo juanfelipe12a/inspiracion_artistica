@@ -1,0 +1,238 @@
+:root {
+  --main-color: #000d1a;
+  --primary-color: #00ff00;
+  --secondary-color: #ffffff;
+  --accent-color: #ff0033;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: "Raleway", sans-serif;
+  color: var(--secondary-color);
+  background-color: var(--main-color);
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: var(--main-color);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 20px;
+  color: var(--secondary-color);
+}
+
+.navbar ul li a:hover {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+}
+
+.logo span {
+  color: var(--primary-color);
+}
+
+.banner-header {
+  height: 100vh;
+  margin-top: 60px;
+  background: 
+    linear-gradient(rgba(0, 13, 26, 0.7), rgba(0, 13, 26, 0.7)),
+    url("img/developer.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.banner-header-text {
+  max-width: 800px;
+}
+
+.banner-title {
+  font-size: 3rem;
+  padding-bottom: 20px;
+}
+
+.banner-title span {
+  color: var(--primary-color);
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+  color: var(--main-color);
+}
+
+.section-portfolio {
+  padding: 60px 20px;
+  background-color: #000a17;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.section-header .title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.card-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.card {
+  background-color: #001a33;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid var(--secondary-color);
+  padding: 4px;
+  background-color: #000a17;
+  transition: transform 0.3s ease-in-out, border-color 0.3s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  border-color: var(--primary-color);
+}
+
+.card h3 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+.main-footer {
+  height: 80px;
+  padding-top: 20px;
+}
+
+.main-footer p {
+  float: left;
+}
+
+.main-footer ul {
+  float: right;
+  list-style: none;
+}
+
+.main-footer ul li {
+  float: left;
+}
+
+.main-footer ul li i {
+  color: var(--primary-color);
+}
+
+.main-footer ul li a {
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+
+.form-map {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-map iframe {
+  height: 400px;
+  width: 100%;
+}
+
+.box-form .input-form {
+  margin-bottom: 20px;
+}
+
+.box-form input,
+.box-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+}
+
+.box-form input:focus,
+.box-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  color: var(--main-color);
+}

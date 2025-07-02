@@ -1,24 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Proyecto 1</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    .banner-header {
+      background: linear-gradient(to right, #2193b0, #6dd5ed);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .banner-title {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .intro-text {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .img-web {
+      max-width: 90%;
+      height: auto;
+      border-radius: 16px;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .img-web:hover {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: white;
+      color: #2193b0;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #f1f1f1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="banner-header">
     <div class="banner-header-text">
       <h1 class="banner-title">Proyecto 1</h1>
-      <p class="intro-text">Este es el contenido del Proyecto 1. Aquí puedes contar qué hiciste, cómo lo hiciste, y qué tecnologías utilizaste.</p>
+      <p class="intro-text">
+        Este es el contenido del Proyecto 1. Aquí puedes contar qué hiciste, cómo lo hiciste, y qué tecnologías utilizaste. El objetivo fue crear una experiencia visual limpia, moderna y fácil de navegar.
+      </p>
       <img 
-  src="img/proyecto-1 web.webp" 
-  alt="Proyecto 1" 
-  class="img-web" 
-  style="max-width: 300px; margin: 20px auto; display: block; border-radius: 12px;" 
-/>
+        src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1000&q=80" 
+        alt="Vista del Proyecto 1" 
+        class="img-web" 
+      />
       <a href="index.html" class="btn">← Volver al inicio</a>
     </div>
   </header>
 </body>
 </html>
+
+
+
+

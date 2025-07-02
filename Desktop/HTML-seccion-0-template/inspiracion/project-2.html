@@ -5,21 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyecto 2</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .banner-header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .banner-title {
+      font-size: 3em;
+      margin: 0 0 10px;
+    }
+
+    .intro-text {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .img-web {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .img-web:hover {
+      transform: scale(1.03);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #fff;
+      color: #764ba2;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #e2e2e2;
+    }
+
+    .extra-info {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 20px;
+      text-align: left;
+    }
+
+    .extra-info h2 {
+      color: #764ba2;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      margin-top: 1rem;
+      border-radius: 12px;
+    }
+
+    .frase-final {
+      margin: 3rem auto 2rem;
+      text-align: center;
+      font-style: italic;
+      font-size: 1.1em;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
   <header class="banner-header">
     <div class="banner-header-text">
       <h1 class="banner-title">Proyecto 2</h1>
-      <p class="intro-text">Aquí se describe el Proyecto 2. Puedes agregar detalles sobre el proceso de desarrollo, tecnologías, etc.</p>
+      <p class="intro-text">
+        Este proyecto consistió en el diseño y desarrollo de una plataforma interactiva utilizando HTML, CSS y JavaScript. El enfoque principal fue la experiencia de usuario, la responsividad y la estética visual moderna.
+      </p>
       <img 
-  src="img/proyecto-2 web.webp" 
-  alt="Proyecto 2" 
-  class="img-web" 
-  style="max-width: 300px; margin: 20px auto; display: block; border-radius: 12px;" 
-/>
-
+        src="https://images.unsplash.com/photo-1581091870622-3b5b4f53ed6b?auto=format&fit=crop&w=1000&q=80" 
+        alt="Vista del Proyecto 2" 
+        class="img-web"
+      />
       <a href="index.html" class="btn">← Volver al inicio</a>
     </div>
   </header>
+
+  <section class="extra-info">
+    <h2>🎯 Objetivos del proyecto</h2>
+    <ul>
+      <li>Crear una experiencia interactiva amigable.</li>
+      <li>Optimizar el rendimiento en dispositivos móviles.</li>
+      <li>Aplicar diseño responsive y limpio.</li>
+    </ul>
+
+    <h2>🧠 Tecnologías usadas</h2>
+    <ul>
+      <li>HTML5 y estructura semántica.</li>
+      <li>CSS3 con Flexbox y animaciones.</li>
+      <li>JavaScript para efectos dinámicos.</li>
+    </ul>
+
+    <h2>📽️ Vista previa del proyecto</h2>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+  </section>
+
+  <p class="frase-final">"Cada línea de código escrita con pasión es una obra de arte digital." – Juan Felipe 🧠</p>
+
 </body>
 </html>

@@ -3,173 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portafolio de proyectos" />
+  <title>Contacto - Juan Felipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <title>Mi portafolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f9ff;
+      color: #111;
+      transition: all 0.3s ease;
+    }
+    body.modo-arte {
+      background: #111; color: #eee;
+    }
+    .modo-arte-btn {
+      position: fixed; top: 10px; right: 10px;
+      background: #d63384; color: white;
+      border: none; padding: 0.5rem 1rem;
+      border-radius: 8px; font-weight: bold;
+      cursor: pointer; z-index: 1000;
+    }
+    .modo-arte-btn.modo-arte { background: #eee; color: #111; }
+    .container {
+      max-width: 600px; margin: 2rem auto;
+      padding: 1rem;
+    }
+    h1 { text-align: center; margin-bottom: 1rem; }
+    iframe {
+      width: 100%; height: 300px;
+      border: 0; border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    form {
+      background: #fff; padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      animation: slideIn 0.6s ease both;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    label { display: block; margin: 0.8rem 0 0.2rem; font-weight: bold; }
+    input, textarea {
+      width: 100%; padding: 0.8rem;
+      border: 2px solid #ddd; border-radius: 8px;
+      font-size: 1rem; transition: border 0.3s ease;
+    }
+    input:focus, textarea:focus { border-color: #d63384; outline: none; }
+    .btn-submit, .btn-chispas {
+      width: 100%; margin: 0.8rem 0; padding: 0.8rem;
+      border: none; border-radius: 8px;
+      font-size: 1rem; cursor: pointer;
+      color: white;
+    }
+    .btn-submit { background: #d63384; }
+    .btn-submit:hover { background: #b3256a; }
+    .btn-chispas { background: #25d366; }
+    .btn-chispas:hover { background: #1cae5c; }
+    .respuesta {
+      display: none; margin-top: 1rem;
+      padding: 1rem; background: #e0ffe0;
+      border: 2px solid #25d366;
+      border-radius: 8px; text-align: center;
+      animation: fadeIn 0.6s ease both;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modo-arte form { background: #222; box-shadow: 0 4px 12px rgba(255,255,255,0.1); }
+    .modo-arte iframe { border: 2px solid #444; }
+    .trivia { margin: 2rem 0; text-align: center; }
+    .trivia button {
+      margin: 0.4rem; padding: 0.6rem 1rem;
+      background: #333; color: white;
+      border: none; border-radius: 8px;
+      cursor: pointer;
+    }
+    .trivia button:hover { background: #555; }
+  </style>
 </head>
 <body>
 
-  <!-- 🔷 Navbar -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo">J<span>F</span></a>
-      <ul>
-        <li><a href="#" class="current">Inicio</a></li>
-        <li><a href="#">Acerca de</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </div>
-  </nav>
+  <button class="modo-arte-btn" onclick="toggleModo()">🎨 Modo claro/oscuro</button>
 
-  <!-- 🔷 Banner -->
-  <section class="banner-header">
-    <div class="banner-header-text">
-      <h1 class="banner-title">Juan Felipe Henry <span>Suarez Ospino</span></h1>
-      <p class="intro-text">Una persona excelente que estudia en Parquesoft y aprende de todo.</p>
-      <a href="docs/cv.pdf" download class="btn">Descargar CV</a>
-    </div>
-  </section>
+  <div class="container">
+    <h1>Contáctame</h1>
 
-  <!-- 🟢 Portafolio -->
-  <section class="section-portfolio">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="title" data-title="Mis proyectos">Portafolio</h3>
+    <iframe
+      src="https://www.google.com/maps?q=Charleston&output=embed"
+      loading="lazy"></iframe>
+
+    <audio controls autoplay>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+      Tu navegador no soporta audio.
+    </audio>
+
+    <form id="contactForm">
+      <label for="nombre"><i class="fas fa-user"></i> Nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+      <label for="email"><i class="fas fa-envelope"></i> Correo</label>
+      <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+
+      <label for="mensaje"><i class="fas fa-comment"></i> Mensaje</label>
+      <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..." rows="4" required></textarea>
+
+      <button type="submit" class="btn-submit">Enviar mensaje</button>
+      <button type="button" class="btn-chispas" onclick="lanzarChispas()">✨ Lanzar chispas</button>
+
+      <div id="respuesta" class="respuesta">
+        ✅ ¡Mensaje enviado con éxito! Te responderé pronto 😊
       </div>
-      <div class="card-projects">
-        <div class="box">
-          <div class="rotate-scale-up">
-            <a href="project-1.html">
-              <img src="img/proyecto-1.webp" alt="Proyecto 1" />
-            </a>
-          </div>
-          <h3>Proyecto 1</h3>
-        </div>
-        <div class="box">
-          <div class="rotate-center">
-            <a href="project-2.html">
-              <img src="img/proyecto-2.webp" alt="Proyecto 2" />
-            </a>
-          </div>
-          <h3>Proyecto 2</h3>
-        </div>
-        <div class="box">
-          <div class="bounce">
-            <a href="project-3.html">
-              <img src="img/proyecto-3.webp" alt="Proyecto 3" />
-            </a>
-          </div>
-          <h3>Proyecto 3</h3>
-        </div>
-      </div>
+    </form>
+
+    <div class="trivia">
+      <h3>🎲 Mini Trivia</h3>
+      <p>¿Cuál es el río que atraviesa Charleston?</p>
+      <button onclick="mostrarRespuesta(this, 'A')">A) Ashley River</button>
+      <button onclick="mostrarRespuesta(this, 'B')">B) Cooper River</button>
+      <button onclick="mostrarRespuesta(this, 'C')">C) Mississippi River</button>
     </div>
-  </section>
+  </div>
 
-  <!-- 🔶 Contacto -->
-  <section class="section-portfolio" id="contacto">
-    <div class="container">
-      <h3 class="title" data-title="Contacto directo">Contáctame</h3>
-
-      <div class="form-map">
-        <!-- 📍 Mapa de Google -->
-        <iframe 
-          src="https://maps.google.com/maps?q=Cali,%20Colombia&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          frameborder="0"
-          style="border: 4px solid red; border-radius: 12px; box-shadow: 0 0 20px lime;"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-
-        <!-- ✉️ Formulario -->
-        <form class="box-form">
-          <input type="text" placeholder="Tu nombre" class="input-form" required />
-          <input type="email" placeholder="Correo electrónico" class="input-form" required />
-
-          <select class="input-form" required>
-            <option value="" disabled selected>Selecciona un motivo</option>
-            <option value="cotizacion">Cotización</option>
-            <option value="soporte">Soporte técnico</option>
-            <option value="consulta">Consulta general</option>
-          </select>
-
-          <textarea placeholder="Escribe tu mensaje aquí..." cols="30" rows="10" class="input-form" required></textarea>
-          <button type="submit" class="btn">Enviar</button>
-
-          <p id="form-message" style="display: none; color: limegreen; margin-top: 15px;">
-            ¡Tu mensaje ha sido enviado con éxito!
-          </p>
-        </form>
-      </div>
-
-      <!-- 🎬 Video de YouTube -->
-      <div style="margin-top: 40px; display: flex; justify-content: center;">
-        <iframe 
-          width="560" 
-          height="315" 
-          src="https://www.youtube.com/embed/-d_HP-aCkgI?si=ElaTrOgF2a_BzVZZ" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- 🔻 Footer -->
-  <footer class="section-portfolio" style="background-color: #0f111e; padding: 30px 20px;">
-    <div class="container">
-      <div class="card-info">
-        <article>
-          <i class="fas fa-map-marked-alt fa-2x"></i>
-          <h4 class="line-break">Dirección</h4>
-          <p>Calle 59n 3bbis-65</p>
-          <p>Cali, Valle del Cauca</p>
-        </article>
-
-        <article>
-          <i class="fas fa-phone fa-2x"></i>
-          <h4 class="line-break">Teléfono</h4>
-          <p>Oficina: 6024867428</p>
-          <p>Personal: 3215356284</p>
-        </article>
-
-        <article>
-          <i class="fas fa-envelope fa-2x"></i>
-          <h4 class="line-break">Email</h4>
-          <p>Oficina: juan_felipe.suarez@uao.edu.co</p>
-          <p>Personal: pipesuarez1506@gmail.com</p>
-        </article>
-
-        <article>
-          <i class="fas fa-clock fa-2x"></i>
-          <h4>Horario de atención</h4>
-          <p>Lunes a Viernes: 9:00 am - 6:00 pm</p>
-          <p>Sábados: 10:00 am - 2:00 pm</p>
-        </article>
-      </div>
-
-      <ul style="list-style: none; display: flex; justify-content: center; gap: 20px; padding-top: 10px;">
-        <li><a href="#"><i class="fab fa-instagram" style="font-size: 24px; color: red;"></i></a></li>
-        <li><a href="#"><i class="fab fa-facebook-square" style="font-size: 24px; color: lime;"></i></a></li>
-        <li><a href="#"><i class="fab fa-youtube" style="font-size: 24px; color: dodgerblue;"></i></a></li>
-      </ul>
-
-      <p style="text-align: center; margin-top: 10px;">Portafolio 2025 &copy;</p>
-    </div>
-  </footer>
-
-  <!-- Script del formulario -->
   <script>
-    const form = document.querySelector(".box-form");
-    form.addEventListener("submit", function (e) {
+    function toggleModo() {
+      document.body.classList.toggle('modo-arte');
+      document.querySelector('.modo-arte-btn').classList.toggle('modo-arte');
+    }
+
+    function lanzarChispas() {
+      confetti({
+        particleCount: 100,
+        spread: 90,
+        origin: { y: 0.6 },
+        shapes: ['text'],
+        emojis: ['✨','🖋️','Juan Felipe','✨'],
+        disableForReducedMotion: true
+      });
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      document.getElementById("form-message").style.display = "block";
-      form.reset();
+      lanzarChispas();
+      document.getElementById('respuesta').style.display = 'block';
+      this.reset();
     });
+
+    function mostrarRespuesta(btn, letra) {
+      const correcto = letra === 'B';
+      btn.style.background = correcto ? 'green' : 'red';
+      const otros = Array.from(btn.parentNode.children).filter(el => el !== btn);
+      otros.forEach(o => o.disabled = true);
+    }
   </script>
 </body>
 </html>

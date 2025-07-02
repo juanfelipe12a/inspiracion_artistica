@@ -3,61 +3,263 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portafolio de proyectos" />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <title>Mi portafolio</title>
+  <meta name="description" content="Portafolio de Juan Felipe" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --text: #111;
+    }
+    body.dark {
+      --bg: #111;
+      --text: #f8f9fa;
+    }
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    header {
+      background: url('img/portafolio/proyecto1.png') no-repeat center center/cover;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px black;
+    }
+
+    .saludo {
+      background: #ffe0ec;
+      padding: 1.5rem;
+      text-align: center;
+      animation: fadeInSlide 2s ease-in-out;
+      color: #d63384;
+      font-size: 1.6rem;
+      font-weight: bold;
+      border-bottom: 2px solid #d63384;
+    }
+
+    @keyframes fadeInSlide {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .frase {
+      text-align: center;
+      font-style: italic;
+      margin: 1rem;
+    }
+
+    button {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.6rem 1.2rem;
+      background: #d63384;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #c2185b;
+    }
+
+    .filtros {
+      text-align: center;
+    }
+
+    .card-projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .box {
+      background: #fff;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    body.dark .box {
+      background: #222;
+      color: #f4f4f4;
+    }
+
+    .box img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .entrevista {
+      padding: 2rem;
+      background: #f0f0f0;
+      margin: 2rem;
+      border-radius: 10px;
+    }
+
+    .entrevista h2 {
+      text-align: center;
+    }
+
+    .entrevista p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .main-footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .main-footer ul {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .main-footer a {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .main-footer a:hover {
+      color: #25d366;
+    }
+  </style>
 </head>
 <body>
-  <!-- Sección Portafolio -->
-  <section class="section-portfolio">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="title" data-title="Mis proyectos">Portafolio</h3>
-      </div>
+  <header>🎤 ¡Entrevista Exclusiva con Juan Felipe!</header>
 
-      <div class="card-projects">
-        <div class="box">
-          <div class="rotate-scale-up">
-            <a href="project-1.html">
-              <img src="img/proyecto-1.webp" alt="Proyecto 1" />
-            </a>
-          </div>
-          <h3>Proyecto 1</h3>
-        </div>
+  <div id="saludo" class="saludo">👋 ¡Hola, bienvenido a mi portafolio!</div>
 
-        <div class="box">
-          <div class="rotate-center">
-            <a href="project-2.html">
-              <img src="img/proyecto-2.webp" alt="Proyecto 2" />
-            </a>
-          </div>
-          <h3>Proyecto 2</h3>
-        </div>
+  <p id="frase-inspiradora" class="frase"></p>
 
-        <div class="box">
-          <div class="bounce">
-            <a href="project-3.html">
-              <img src="img/proyecto-3.webp" alt="Proyecto 3" />
-            </a>
-          </div>
-          <h3>Proyecto 3</h3>
-        </div>
-      </div>
+  <button onclick="repetirSaludo()">Repetir saludo</button>
+  <button onclick="cambiarModo()">Modo claro / oscuro</button>
+  <button onclick="lanzarChispas()">Lanzar chispas Juan Felipe</button>
+
+  <div class="filtros">
+    <button onclick="filtrar('todos')">Mostrar todos</button>
+    <button onclick="filtrar('web')">Web</button>
+    <button onclick="filtrar('app')">App</button>
+    <button onclick="filtrar('design')">Diseño</button>
+  </div>
+
+  <section class="card-projects" id="proyectos">
+    <div class="box web">
+      <img src="img/portafolio/proyecto1.png" alt="Proyecto Web 1" />
+      <h3>Proyecto Web 1</h3>
+    </div>
+    <div class="box app">
+      <img src="img/portafolio/proyecto2.png" alt="Proyecto App" />
+      <h3>App Móvil</h3>
+    </div>
+    <div class="box design">
+      <img src="img/portafolio/proyecto3.png" alt="Diseño" />
+      <h3>Diseño Creativo</h3>
     </div>
   </section>
 
-  <!-- Footer -->
+  <section class="entrevista">
+    <h2>🎤 Entrevista a Juan Felipe</h2>
+    <p><strong>Entrevistador:</strong> ¿Qué te motivó a entrar en el mundo del desarrollo web?</p>
+    <p><strong>Juan Felipe:</strong> Siempre me apasionó crear cosas visuales que también fueran funcionales. Unir diseño y lógica me pareció mágico.</p>
+    <p><strong>Entrevistador:</strong> ¿Cuál es tu proyecto favorito?</p>
+    <p><strong>Juan Felipe:</strong> El portafolio que estás viendo ahora. Tiene mi esencia: color, dinamismo y creatividad.</p>
+  </section>
+
   <footer class="main-footer">
-    <div class="container">
-      <p class="small">Portafolio 2024 &copy;</p>
-      <ul>
-        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-      </ul>
-    </div>
+    <p>Portafolio 2025 © Juan Felipe</p>
+    <ul>
+      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+      <li><a href="https://wa.me/57321535628" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+    </ul>
   </footer>
+
+  <script>
+    const frases = [
+      "Cree en ti mismo, incluso cuando nadie más lo haga.",
+      "Cada línea de código es un paso hacia tus sueños.",
+      "Transforma ideas en arte digital.",
+      "La constancia supera al talento.",
+      "La creatividad es tu superpoder."
+    ];
+
+    function repetirSaludo() {
+      const saludo = document.getElementById("saludo");
+      saludo.classList.remove("saludo");
+      void saludo.offsetWidth;
+      saludo.classList.add("saludo");
+    }
+
+    function cambiarModo() {
+      document.body.classList.toggle("dark");
+    }
+
+    function confetiInicio() {
+      confetti({ particleCount: 150, spread: 120, origin: { y: 0.6 } });
+    }
+
+    function lanzarChispas() {
+      for (let i = 0; i < 5; i++) {
+        confetti({
+          particleCount: 20,
+          angle: 60 + i * 15,
+          spread: 45,
+          origin: { x: Math.random(), y: Math.random() },
+          ticks: 150,
+          shapes: ['text'],
+          scalar: 1,
+          gravity: 0.5,
+          zIndex: 999,
+          emoji: '✨ Juan Felipe ✨'
+        });
+      }
+    }
+
+    function fraseInspiradora() {
+      const frase = frases[Math.floor(Math.random() * frases.length)];
+      document.getElementById("frase-inspiradora").textContent = `"${frase}"`;
+    }
+
+    function filtrar(categoria) {
+      const proyectos = document.querySelectorAll('.box');
+      proyectos.forEach(proyecto => {
+        proyecto.classList.toggle('hidden', categoria !== 'todos' && !proyecto.classList.contains(categoria));
+      });
+    }
+
+    window.onload = () => {
+      confetiInicio();
+      fraseInspiradora();
+    };
+  </script>
 </body>
 </html>
