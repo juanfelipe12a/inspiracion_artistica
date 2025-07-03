@@ -12,6 +12,7 @@
       background-color: #111;
       color: #f4f4f4;
       padding: 20px;
+      overflow-x: hidden;
     }
     h1, h2 {
       text-align: center;
@@ -53,15 +54,9 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
-    .timeline {
-      border-left: 3px solid #0ff;
+    .timeline, .accordion, .modo, .trivia, .mapa-container, .juego, .espectaculo, .video-container {
+      max-width: 600px;
       margin: 30px auto;
-      padding-left: 20px;
-      max-width: 600px;
-    }
-    .accordion {
-      max-width: 600px;
-      margin: 20px auto;
     }
     .accordion-item {
       background: #222;
@@ -90,14 +85,6 @@
       font-size: 1.2rem;
       color: gold;
     }
-    .modo {
-      margin: 20px auto;
-      text-align: center;
-    }
-    .trivia {
-      max-width: 600px;
-      margin: 30px auto;
-    }
     .trivia button {
       background-color: #333;
       color: white;
@@ -106,10 +93,6 @@
       margin: 5px;
       border-radius: 8px;
       cursor: pointer;
-    }
-    .mapa-container {
-      text-align: center;
-      margin: 40px auto;
     }
     iframe {
       display: block;
@@ -126,17 +109,34 @@
       background: radial-gradient(#fff 1px, transparent 1px);
       background-size: 10px 10px;
     }
+    .juego input {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 80px;
+      text-align: center;
+    }
+    canvas {
+      position: fixed;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
-  <h1>🎨 Inspiración Artística - Juan Felipe ⭐</h1>
+  <h1>🎨 Inspiración Artística ⭐</h1>
 
   <div class="info-personal">
-    <p>Hola, soy <strong>Juan Felipe</strong>, un desarrollador apasionado. 🎬 Estudiante en <strong>Parquesoft</strong>, creador de experiencias digitales que inspiran.</p>
+    <p>Hola, soy un desarrollador apasionado. 🎬 Estudiante en <strong>Parquesoft</strong>, creador de experiencias digitales que inspiran.</p>
   </div>
 
   <button class="btn" onclick="mostrarFrase()">✨ Inspiración</button>
   <button class="btn" onclick="mostrarFrase()">🔁 Repetir frase</button>
+  <button class="btn" onclick="lanzarConfeti()">🎆 Espectáculo</button>
   <div class="frase" id="contenedor-frase"></div>
 
   <div class="timeline">
@@ -178,15 +178,31 @@
     <iframe src="https://www.google.com/maps?q=Hollywood&output=embed" width="600" height="450" allowfullscreen loading="lazy"></iframe>
   </div>
 
+  <div class="video-container">
+    <h2>🎥 Video de Inspiración</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/5NV6Rdv1a3I?si=K81_YyVI2G4bf4hF&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+
+  <div class="juego">
+    <h2>🎯 Juego: Adivina el número</h2>
+    <p>Estoy pensando en un número del 1 al 10. ¿Puedes adivinar cuál es?</p>
+    <input type="number" id="intento" min="1" max="10" placeholder="Tu número">
+    <button class="btn" onclick="adivinarNumero()">Adivinar</button>
+    <p id="resultado-juego" style="margin-top:15px;"></p>
+  </div>
+
+  <!-- Sonido del espectáculo -->
+  <audio id="confetiSound" src="https://www.myinstants.com/media/sounds/mario-coin.mp3" preload="auto"></audio>
+
+  <canvas id="confettiCanvas"></canvas>
+
   <script>
     const frases = [
-      "Soy Juan Felipe, un apasionado del desarrollo de software y el aprendizaje constante.",
-      "A mis 22 años, estudio en Parquesoft para transformar ideas en soluciones tecnológicas.",
-      "Cada línea de código que escribo es un paso más hacia mis sueños profesionales.",
-      "Me esfuerzo cada día para crecer y aportar valor con creatividad y disciplina.",
-      "En el mundo del software, encuentro mi inspiración y mi vocación.",
-      "El aprendizaje es mi motor y la innovación mi objetivo.",
-      "Ser desarrollador es para mí más que una carrera, es una forma de entender el mundo.",
+      "El arte es la mentira que nos permite ver la verdad.",
+      "No temas a la perfección, nunca la alcanzarás.",
+      "La creatividad es la inteligencia divirtiéndose.",
+      "El arte limpia del alma el polvo de la vida diaria.",
+      "Cada línea es una oportunidad para expresarte.",
     ];
 
     function mostrarFrase() {
@@ -213,6 +229,80 @@
 
     function mostrarRespuesta(btn, correcto) {
       btn.style.backgroundColor = correcto ? 'green' : 'red';
+    }
+
+    let numeroSecreto = Math.floor(Math.random() * 10) + 1;
+    let intentosRestantes = 3;
+
+    function adivinarNumero() {
+      const intento = parseInt(document.getElementById("intento").value);
+      const resultado = document.getElementById("resultado-juego");
+
+      if (isNaN(intento) || intento < 1 || intento > 10) {
+        resultado.textContent = "❗ Ingresa un número válido entre 1 y 10.";
+        return;
+      }
+
+      if (intento === numeroSecreto) {
+        resultado.textContent = "🎉 ¡Correcto! ¡Has adivinado el número!";
+        resultado.style.color = "lime";
+      } else {
+        intentosRestantes--;
+        if (intentosRestantes > 0) {
+          resultado.textContent = `❌ Incorrecto. Te quedan ${intentosRestantes} intento(s).`;
+          resultado.style.color = "orange";
+        } else {
+          resultado.textContent = `💥 Lo siento, perdiste. El número era ${numeroSecreto}.`;
+          resultado.style.color = "red";
+          document.querySelector(".juego button").disabled = true;
+        }
+      }
+    }
+
+    function lanzarConfeti() {
+      const canvas = document.getElementById("confettiCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const sound = document.getElementById("confetiSound");
+      sound.currentTime = 0;
+      sound.play();
+
+      let confetis = [];
+      for (let i = 0; i < 100; i++) {
+        confetis.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 20 + 10,
+          speed: Math.random() * 2 + 1,
+          char: "★",
+          color: `hsl(${Math.random() * 360}, 100%, 60%)`
+        });
+      }
+
+      const intervalo = setInterval(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confetis.forEach(c => {
+          ctx.fillStyle = c.color;
+          ctx.font = `${c.size}px serif`;
+          ctx.fillText(c.char, c.x, c.y);
+          c.y += c.speed;
+        });
+      }, 30);
+
+      setTimeout(() => {
+        clearInterval(intervalo);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }, 4000);
+
+      // Repetir automáticamente cada 10 segundos por 30s
+      let veces = 0;
+      const repetidor = setInterval(() => {
+        if (veces >= 3) return clearInterval(repetidor);
+        lanzarConfeti();
+        veces++;
+      }, 10000);
     }
 
     window.onload = () => {

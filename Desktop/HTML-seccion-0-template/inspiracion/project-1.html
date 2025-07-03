@@ -64,21 +64,87 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🎮 Juego Ahorcado */
+    .ahorcado {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .palabra-secreta {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .letra-caja {
+      width: 40px;
+      height: 50px;
+      border-bottom: 3px solid #2193b0;
+      font-size: 2rem;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .letra-revelada {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    input[type="checkbox"]:checked + label .letra-revelada {
+      opacity: 1;
+    }
+
+    .teclado {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tecla {
+      background-color: #eee;
+      border: 2px solid #2193b0;
+      color: #2193b0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .tecla:hover {
+      background-color: #d6f2ff;
+    }
+
+    .instrucciones {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
   <header class="banner-header">
     <div class="banner-header-text">
-      <h1 class="banner-title">Proyecto 1</h1>
+      <h1 class="banner-title">🐱 Proyecto 1</h1>
       <p class="intro-text">
         Este es el contenido del Proyecto 1. Aquí puedes contar qué hiciste, cómo lo hiciste, y qué tecnologías utilizaste. El objetivo fue crear una experiencia visual limpia, moderna y fácil de navegar.
       </p>
@@ -90,9 +156,60 @@
       <a href="index.html" class="btn">← Volver al inicio</a>
     </div>
   </header>
+
+  <!-- 🎮 Juego del ahorcado -->
+  <section class="ahorcado">
+    <h2>🎮 Juego del Ahorcado</h2>
+    <p class="instrucciones">Haz clic en las letras para revelar la palabra secreta.</p>
+
+    <!-- Palabra: G A T O -->
+    <div class="palabra-secreta">
+      <div class="letra-caja">
+        <input type="checkbox" id="g">
+        <label for="g"><span class="letra-revelada">G</span></label>
+      </div>
+      <div class="letra-caja">
+        <input type="checkbox" id="a">
+        <label for="a"><span class="letra-revelada">A</span></label>
+      </div>
+      <div class="letra-caja">
+        <input type="checkbox" id="t">
+        <label for="t"><span class="letra-revelada">T</span></label>
+      </div>
+      <div class="letra-caja">
+        <input type="checkbox" id="o">
+        <label for="o"><span class="letra-revelada">O</span></label>
+      </div>
+    </div>
+
+    <div class="teclado">
+      <label class="tecla" for="a">A</label>
+      <label class="tecla" for="b">B</label>
+      <label class="tecla" for="c">C</label>
+      <label class="tecla" for="d">D</label>
+      <label class="tecla" for="e">E</label>
+      <label class="tecla" for="f">F</label>
+      <label class="tecla" for="g">G</label>
+      <label class="tecla" for="h">H</label>
+      <label class="tecla" for="i">I</label>
+      <label class="tecla" for="j">J</label>
+      <label class="tecla" for="k">K</label>
+      <label class="tecla" for="l">L</label>
+      <label class="tecla" for="m">M</label>
+      <label class="tecla" for="n">N</label>
+      <label class="tecla" for="o">O</label>
+      <label class="tecla" for="p">P</label>
+      <label class="tecla" for="q">Q</label>
+      <label class="tecla" for="r">R</label>
+      <label class="tecla" for="s">S</label>
+      <label class="tecla" for="t">T</label>
+      <label class="tecla" for="u">U</label>
+      <label class="tecla" for="v">V</label>
+      <label class="tecla" for="w">W</label>
+      <label class="tecla" for="x">X</label>
+      <label class="tecla" for="y">Y</label>
+      <label class="tecla" for="z">Z</label>
+    </div>
+  </section>
 </body>
 </html>
-
-
-
-

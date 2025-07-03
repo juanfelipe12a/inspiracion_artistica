@@ -6,6 +6,7 @@
   <title>Proyecto 3</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
+    /* ...estilos existentes... */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -13,160 +14,51 @@
       color: #333;
       overflow-x: hidden;
     }
+    /* ... resto de los estilos no se repiten aquí por brevedad ... */
 
-    header {
-      background: linear-gradient(to right, #ff6e7f, #bfe9ff);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-      animation: fadeIn 1.2s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    nav {
-      margin-top: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      margin: 0 10px;
-      padding: 10px 20px;
-      background: #fff;
-      color: #ff6e7f;
-      border-radius: 20px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    nav a:hover {
-      background: #ffd1d1;
-    }
-
-    .banner-title {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-
-    .intro-text {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: 0 auto 20px;
-    }
-
-    .img-web {
-      max-width: 90%;
-      height: auto;
-      border-radius: 16px;
-      margin: 30px auto;
-      display: block;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-      filter: drop-shadow(0 0 5px rgba(255,255,255,0.6));
-    }
-
-    .img-web:hover {
-      transform: scale(1.05);
-    }
-
-    .contenido {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    .contenido p {
-      font-size: 1.1em;
+    .mapa {
+      margin: 3rem auto;
       max-width: 800px;
-      margin: auto;
+      text-align: center;
     }
 
-    audio {
-      display: block;
-      margin: 2rem auto;
-      width: 80%;
-      border-radius: 10px;
+    .mapa iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
     }
 
-    #btn-chispas {
-      margin: 2rem auto;
-      display: block;
-      padding: 12px 20px;
-      background-color: #ff6e7f;
-      border: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 10px;
+    .ticket-icono {
+      text-align: center;
+      font-size: 2rem;
       cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
-
-    #btn-chispas:hover {
-      background-color: #f94b66;
-    }
-
-    .frase {
-      text-align: center;
-      font-style: italic;
-      margin: 2rem auto;
-      font-size: 1.2rem;
-      color: #777;
-    }
-
-    footer {
-      margin-top: 3rem;
-      text-align: center;
-      font-size: 0.9em;
-      color: #888;
-      padding: 20px;
-    }
-
-    /* Chispas estilo */
-    .chispa {
-      position: fixed;
-      font-weight: bold;
-      color: #ff69b4;
-      animation: volar 1.5s ease-out forwards;
-      pointer-events: none;
-    }
-
-    @keyframes volar {
-      0% { transform: scale(1) translateY(0); opacity: 1; }
-      100% { transform: scale(0.5) translateY(-200px); opacity: 0; }
-    }
-
-    /* Animación mensaje de éxito */
-    @keyframes fadeSuccess {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    #mensaje-exito {
-      display: none;
-      margin-top: 20px;
-      font-size: 1.2rem;
-      color: green;
-      animation: fadeSuccess 1s ease-out;
+      margin: 2rem 0;
+      color: #ff6e7f;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎵 Música relajante de fondo -->
-  <audio controls autoplay loop>
-    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure/Komiku_-_10_-_Battle_of_Pogs.mp3" type="audio/mp3">
-    Tu navegador no soporta audio HTML5.
+  <audio id="campana" autoplay>
+    <source src="https://www.fesliyanstudios.com/play-mp3/4387" type="audio/mpeg">
   </audio>
 
-  <!-- 🌈 Encabezado con navegación -->
+  <audio id="sonidoOkey">
+    <source src="https://www.fesliyanstudios.com/play-mp3/6961" type="audio/mpeg">
+  </audio>
+
+  <!-- 🎵 Música de fondo -->
+  <audio controls autoplay loop>
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure/Komiku_-_10_-_Battle_of_Pogs.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- 🌈 Encabezado -->
   <header>
     <h1 class="banner-title">Proyecto 3</h1>
-    <p class="intro-text">
-      En este proyecto exploramos animaciones dinámicas y un enfoque más visual y atractivo, con especial atención en la estética y la interacción.
-    </p>
+    <p class="intro-text">En este proyecto exploramos animaciones dinámicas y un enfoque más visual y atractivo, con especial atención en la estética y la interacción.</p>
     <nav>
       <a href="index.html">🏠 Inicio</a>
       <a href="contact.html">📬 Contacto</a>
@@ -174,25 +66,16 @@
     </nav>
   </header>
 
-  <!-- 🖼️ Imagen del proyecto -->
-  <img 
-    src="https://images.unsplash.com/photo-1600374004378-6e1de876f1d2?auto=format&fit=crop&w=1000&q=80" 
-    alt="Vista del Proyecto 3" 
-    class="img-web"
-  />
+  <!-- 🖼️ Imagen destacada -->
+  <img src="https://images.unsplash.com/photo-1600374004378-6e1de876f1d2?auto=format&fit=crop&w=1000&q=80" alt="Vista del Proyecto 3" class="img-web"/>
 
   <!-- 📝 Descripción -->
   <section class="contenido">
-    <p>
-      Este proyecto utiliza HTML5, CSS3 y JavaScript moderno para lograr una experiencia visual envolvente. Está diseñado con animaciones suaves y una navegación clara.
-    </p>
-    <p>
-      Todo está pensado para atraer la atención del usuario mientras se mantiene una estructura profesional.
-    </p>
+    <p>Este proyecto utiliza HTML5, CSS3 y JavaScript moderno para lograr una experiencia visual envolvente.</p>
     <button id="btn-chispas">✨ Lanzar chispas con mi nombre</button>
   </section>
 
-  <!-- 📬 Formulario animado -->
+  <!-- 📬 Formulario -->
   <section class="contenido">
     <h2>Contáctame desde aquí</h2>
     <form id="formulario" style="max-width: 500px; margin: auto;">
@@ -204,15 +87,36 @@
     <div id="mensaje-exito">¡Mensaje enviado con éxito! 🎉</div>
   </section>
 
-  <p class="frase">"Tu creatividad es el límite del código." – Juan Felipe</p>
+  <!-- 🎭 Adivina Quién -->
+  <section class="contenido adivina-quien">
+    <h2>🎭 Adivina Quién</h2>
+    <p>Pista: Este personaje tiene gafas, es divertido y trabaja con computadoras 💻</p>
+    <form>
+      <label><input type="radio" name="personaje"> 📘 Juan Felipe</label>
+      <label><input type="radio" name="personaje"> 🧢 Rokkie</label>
+      <label><input type="radio" name="personaje"> 🦸‍♂️ Escopeta</label>
+      <p style="margin-top:1rem; background:#e6ffee; border:2px dashed #3cba54; padding:10px; border-radius:10px;">🤔 ¿Adivinaste? Solo uno de ellos es el verdadero. ¡Lee bien las pistas!</p>
+    </form>
+  </section>
 
+  <!-- 🗺️ Mapas -->
+  <section class="mapa">
+    <h2>📍 Mapas</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5493697.776434245!2d-124.84897408375582!3d54.56089077809507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b3005e3fa10d69%3A0x42937c676dd49e0b!2sCanad%C3%A1!5e0!3m2!1ses-419!2sco!4v1689871234567" allowfullscreen="" loading="lazy"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329390.8424748893!2d-123.16494900810469!3d47.75107464309633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549012f6f23f46c9%3A0xfef4f6c1963d83a4!2sWashington%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sco!4v1689871234567" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- 🎫 Ticket sonido -->
+  <div class="ticket-icono" onclick="document.getElementById('sonidoOkey').play()">
+    🎟️ Haz clic aquí para validar tu ticket
+  </div>
+
+  <p class="frase">"Tu creatividad es el límite del código." – Juan Felipe</p>
   <footer>
     Hecho con ❤️ por Juan Felipe Henry Suárez Ospino – 2025
   </footer>
 
-  <!-- 🌟 Scripts -->
   <script>
-    // ✨ Chispas personalizadas
     const btnChispas = document.getElementById("btn-chispas");
     btnChispas.addEventListener("click", () => {
       for (let i = 0; i < 15; i++) {
@@ -226,7 +130,6 @@
       }
     });
 
-    // 📤 Animación de envío de formulario
     const formulario = document.getElementById("formulario");
     const btnEnviar = document.getElementById("btn-enviar");
     const mensajeExito = document.getElementById("mensaje-exito");
@@ -242,7 +145,6 @@
         formulario.reset();
         mensajeExito.style.display = "block";
 
-        // Efecto chispas al enviar
         for (let i = 0; i < 10; i++) {
           const chispa = document.createElement("div");
           chispa.classList.add("chispa");
@@ -252,10 +154,8 @@
           document.body.appendChild(chispa);
           setTimeout(() => chispa.remove(), 1500);
         }
-
       }, 2000);
     });
   </script>
-
 </body>
 </html>

@@ -71,8 +71,21 @@
       animation: fadeIn 0.6s ease both;
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .modo-arte form { background: #222; box-shadow: 0 4px 12px rgba(255,255,255,0.1); }
-    .modo-arte iframe { border: 2px solid #444; }
+    #letrero {
+      display: none;
+      font-size: 1.4rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      background: #d1e7dd;
+      color: #0f5132;
+      border: 2px solid #0f5132;
+      animation: aparecer 1s ease forwards;
+    }
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .trivia { margin: 2rem 0; text-align: center; }
     .trivia button {
       margin: 0.4rem; padding: 0.6rem 1rem;
@@ -90,15 +103,16 @@
   <div class="container">
     <h1>Contáctame</h1>
 
-    <iframe
-      src="https://www.google.com/maps?q=Charleston&output=embed"
-      loading="lazy"></iframe>
+    <!-- Mapa Bogotá -->
+    <h2>📍 Bogotá, Colombia</h2>
+    <iframe src="https://www.google.com/maps?q=Bogotá,Colombia&output=embed" loading="lazy"></iframe>
 
+    <!-- Audio de fondo -->
     <audio controls autoplay>
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-      Tu navegador no soporta audio.
+      <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
     </audio>
 
+    <!-- Formulario -->
     <form id="contactForm">
       <label for="nombre"><i class="fas fa-user"></i> Nombre</label>
       <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
@@ -117,12 +131,61 @@
       </div>
     </form>
 
+    <!-- Saludo -->
+    <div style="text-align:center;">
+      <button onclick="mostrarSaludo()" class="btn-submit" style="margin-top: 1rem;">👋 Mostrar saludo</button>
+      <div id="letrero">
+        👋 ¡Hola, soy Juan Felipe! Bienvenido a mi espacio web ✨
+      </div>
+    </div>
+
+    <!-- Moneda con sonido -->
+    <div style="text-align:center; margin-top:2rem;">
+      <p>🪙 Pulsa la moneda mágica</p>
+      <button onclick="tocarMoneda()" style="font-size:2rem; background:none; border:none; cursor:pointer;">🪙</button>
+      <audio id="monedaAudio" src="https://www.fesliyanstudios.com/play-mp3/4376" preload="auto"></audio>
+    </div>
+
+    <!-- Trivia -->
     <div class="trivia">
       <h3>🎲 Mini Trivia</h3>
       <p>¿Cuál es el río que atraviesa Charleston?</p>
       <button onclick="mostrarRespuesta(this, 'A')">A) Ashley River</button>
       <button onclick="mostrarRespuesta(this, 'B')">B) Cooper River</button>
       <button onclick="mostrarRespuesta(this, 'C')">C) Mississippi River</button>
+    </div>
+
+    <!-- Juego Verdadero o Falso -->
+    <div class="juego-vf" style="margin-top: 3rem; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <h2 style="text-align:center;">🧠 Juego: ¿Verdadero o Falso?</h2>
+
+      <form style="text-align:center;">
+        <p><strong>🎨 Van Gogh vendió solo una pintura en vida.</strong></p>
+        <label style="display:block; margin-bottom:8px;">
+          <input type="radio" name="respuesta1" />
+          Verdadero ✅
+        </label>
+        <label>
+          <input type="radio" name="respuesta1" />
+          Falso ❌
+        </label>
+      </form>
+
+      <hr style="margin: 2rem 0; border: none; border-top: 2px dashed #ccc;">
+
+      <form style="text-align:center;">
+        <p><strong>🖼️ Leonardo da Vinci pintó el techo de la Capilla Sixtina.</strong></p>
+        <label style="display:block; margin-bottom:8px;">
+          <input type="radio" name="respuesta2" />
+          Verdadero ❌
+        </label>
+        <label>
+          <input type="radio" name="respuesta2" />
+          Falso ✅
+        </label>
+      </form>
+
+      <p style="margin-top:1.5rem; font-style:italic; text-align:center;">(Las respuestas correctas están marcadas con emojis 😉)</p>
     </div>
   </div>
 
@@ -134,13 +197,22 @@
 
     function lanzarChispas() {
       confetti({
-        particleCount: 100,
-        spread: 90,
+        particleCount: 150,
+        spread: 100,
         origin: { y: 0.6 },
-        shapes: ['text'],
-        emojis: ['✨','🖋️','Juan Felipe','✨'],
+        emojis: ['🌟', '⭐', '✨'],
         disableForReducedMotion: true
       });
+    }
+
+    function mostrarSaludo() {
+      document.getElementById("letrero").style.display = "block";
+    }
+
+    function tocarMoneda() {
+      const sonido = document.getElementById("monedaAudio");
+      sonido.currentTime = 0;
+      sonido.play();
     }
 
     document.getElementById('contactForm').addEventListener('submit', function(e) {

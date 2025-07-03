@@ -150,6 +150,26 @@
     .main-footer a:hover {
       color: #25d366;
     }
+
+    /* Estilo para el juego de cartas */
+    #juego-cartas {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .carta {
+      font-size: 4rem;
+      width: 100px;
+      height: 140px;
+      background: #ffc107;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.6s ease;
+    }
   </style>
 </head>
 <body>
@@ -182,6 +202,27 @@
     <div class="box design">
       <img src="img/portafolio/proyecto3.png" alt="Diseño" />
       <h3>Diseño Creativo</h3>
+    </div>
+  </section>
+
+  <!-- JUEGO DE CARTAS -->
+  <section class="entrevista">
+    <h2>🃏 Juego Visual - Batalla de Cartas</h2>
+    <p>Cada jugador da vuelta a una carta. El que tenga el número más alto, gana la ronda.</p>
+
+    <div id="juego-cartas">
+      <div style="display: flex; justify-content:center; gap: 2rem;">
+        <div>
+          <h3>Jugador 1</h3>
+          <div id="carta1" class="carta">❓</div>
+        </div>
+        <div>
+          <h3>Jugador 2</h3>
+          <div id="carta2" class="carta">❓</div>
+        </div>
+      </div>
+      <button onclick="jugarCartas()">Voltear Cartas</button>
+      <p id="resultado-cartas"></p>
     </div>
   </section>
 
@@ -254,6 +295,26 @@
       proyectos.forEach(proyecto => {
         proyecto.classList.toggle('hidden', categoria !== 'todos' && !proyecto.classList.contains(categoria));
       });
+    }
+
+    function jugarCartas() {
+      const carta1 = Math.floor(Math.random() * 10) + 1;
+      const carta2 = Math.floor(Math.random() * 10) + 1;
+
+      document.getElementById("carta1").textContent = carta1;
+      document.getElementById("carta2").textContent = carta2;
+
+      const resultado = document.getElementById("resultado-cartas");
+
+      if (carta1 > carta2) {
+        resultado.textContent = "Jugador 1 gana la ronda 🎉";
+      } else if (carta2 > carta1) {
+        resultado.textContent = "Jugador 2 gana la ronda 🥳";
+      } else {
+        resultado.textContent = "¡Empate! Vuelvan a intentarlo 🔄";
+      }
+
+      confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
     }
 
     window.onload = () => {
